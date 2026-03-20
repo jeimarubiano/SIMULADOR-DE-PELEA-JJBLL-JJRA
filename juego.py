@@ -55,7 +55,7 @@ def turno_jugador():
         turno_valido = False
         while not turno_valido:
             try:
-                mostrar = int(input(f"\n==============================================\n1) Atacar (Daño 10 - 15) \n2) Curar({pociones})\n3) Habilidad especial (Daño 30 - 50)\n==============================================\nIngresa una opcion: ").strip())
+                mostrar = int(input(f"\n╔══════════════════════════════════════╗\n1) Atacar (Daño 10 - 15) \n2) Curar({pociones})\n3) Habilidad especial (Daño 30 - 50)\n╚══════════════════════════════════════╝\nIngresa una opcion: ").strip())
             except:
                 print("No se pueden colocar letras")
             if mostrar == 1:
@@ -104,3 +104,13 @@ def turno_enemigo():
         print(f"║  🗡️  ataca a {nombre_heroe} (-{daño}HP)")
         print(f"╚══════════════════════════════════════╝")
         salud_heroe = salud_heroe - daño
+        
+        
+while salud_heroe > 0 and salud_enemigo > 0:
+    mostrar_estado()
+    turno_jugador()
+    if verificar_ganador():
+        break
+    turno_enemigo()
+    if verificar_ganador():
+        break
